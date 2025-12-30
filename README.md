@@ -1,16 +1,38 @@
-# React + Vite
+# 프로젝트 명 to_do
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+인가 인증 기능이 있는 to do 웹 애플리케이션입니다
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# 사용 기술
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+프론트 엔드
 
-## Expanding the ESLint configuration
+언어: JavaScript(ES6+)
+프레임워크: React(Vite 기반)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+주요 라이브러리
+-Redux:전역 상태 관리
+
+
+백엔드
+
+언어: Python 3.12.10
+프레임워크: FastAPI
+
+주요 라이브러리
+-Pydantic:데이터 검증 및 스키마 관리
+-Pyton-jose & Cryptography: JWT 보안 및 인증 처리
+-Python-multipart: 폼 데이터 및 파일 업로드 처리
+
+
+
+# 릴리즈 노트
+
+v0.1.0 프로젝트 기본 구조 및 개발 환경 설정 25-12-30
+v0.1.1 README.md 작성 25-12-30
+
+
+
+
+
