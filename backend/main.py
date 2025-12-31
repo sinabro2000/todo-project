@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from controller.auth_controller import router as auth_router
+from backend.routers.auth_router import router as auth_router
 
 
 app = FastAPI()
