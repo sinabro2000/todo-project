@@ -1,0 +1,65 @@
+/* 전체 화면 중앙 정렬 */
+#login-div {
+  width: 350px;
+  margin: 100px auto; /* 화면 가운데 정렬 */
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+/* 입력창 공통 스타일 */
+#login-div input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#login-div input:focus {
+  border-color: #4a90e2;
+}
+
+/* 로그인 버튼 스타일 */
+#login-div button {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4a90e2;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#login-div button:hover {
+  background-color: #357ABD;
+}
+
+/* 회원가입 버튼 텍스트 */
+#login-div div span {
+  font-size: 13px;
+  color: #555;
+}
+
+#login-div #sign-btn {
+  background: none;
+  border: none;
+  color: #4a90e2;
+  cursor: pointer;
+  font-size: 13px;
+  margin-left: 5px;
+  padding: 0;
+}
+
+#login-div #sign-btn:hover {
+  text-decoration: underline;
+}
