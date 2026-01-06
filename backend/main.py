@@ -6,7 +6,7 @@ from routers.auth_router import router as auth_router
 app = FastAPI()
 
 origins = [
-    "http://localhost:5173",  # Vite 기본 포트
+    "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]
 

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { logoutApi } from "../../service/userService";
 import { useAuth } from "../../context/AuthContext";
 
-
 function TodoPage() {
 
     const { logout } = useAuth();

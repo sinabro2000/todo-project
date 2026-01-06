@@ -1,0 +1,29 @@
+.react-calendar abbr {
+  text-decoration: none;
+}
+
+/* 선택된 날짜 */
+.react-calendar__tile--active {
+  background: #3b82f6;   /* 기본 파랑, 원하시면 변경 */
+  color: #fff;
+  border-radius: 100px;
+}
+
+/* hover 시에도 원 유지 */
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  border-radius: 100px;
+}
+
+
+.react-calendar__navigation button {
+  min-width: 48px;
+  min-height: 48px;
+  font-size: 1.2rem;
+}
+
+/* 월/연도 텍스트도 같이 키우고 싶을 때 */
+.react-calendar__navigation__label {
+  font-size: 5.2rem;
+  font-weight: 600;
+}
