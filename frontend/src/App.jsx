@@ -5,8 +5,6 @@ import SignUpPage from "./page/sign/SignUpPage";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
 import { useAuth } from "./context/AuthContext";
-import CalendarComponent from "./component/CalendarComponent";
-import Backlog from "./component/Backlog";
 
 
 function App() {
@@ -14,66 +12,63 @@ function App() {
   const { isAuthenticated } = useAuth();
 
   return (
-    <>
-    <TodoPage/>
-      </>
-    // <BrowserRouter>
-    //   <div className="app-center">
-    //     <Routes>
+    <BrowserRouter>
+      <div className="app-center">
+        <Routes>
 
 
 
-    //       {/* 메인 */}
-    //       <Route
-    //         path="/"
-    //         element={
-    //           isAuthenticated
-    //             ? <Navigate to="/todo" replace />
-    //             : <Navigate to="/login" replace />
-    //         }
-    //       />
+          {/* 메인 */}
+          <Route
+            path="/"
+            element={
+              isAuthenticated
+                ? <Navigate to="/todo" replace />
+                : <Navigate to="/login" replace />
+            }
+          />
 
-    //       {/* 로그인 페이지*/}
-    //       <Route
-    //         path="/login"
-    //         element={
-    //           <PublicRoute>
-    //             <LoginPage />
-    //           </PublicRoute>
-    //         }
-    //       />
-
-
-    //       {/* 회원가입 페이지*/}
-    //       <Route
-    //         path="/sign"
-    //         element={
-    //           <PublicRoute>
-    //             <SignUpPage />
-    //           </PublicRoute>
-    //         }
-    //       />
+          {/* 로그인 페이지*/}
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
 
 
-    //       {/* To do 페이지 */}
-    //       <Route
-    //         path="/todo"
-    //         element={
-    //           <PrivateRoute>
-    //             <TodoPage />
-    //           </PrivateRoute>
-    //         }
-    //       />
+          {/* 회원가입 페이지*/}
+          <Route
+            path="/sign"
+            element={
+              <PublicRoute>
+                <SignUpPage />
+              </PublicRoute>
+            }
+          />
 
-    //       {/* 없는 경로 */}
-    //       <Route path="*" element={<Navigate to="/" replace />} />
+
+          {/* To do 페이지 */}
+          <Route
+            path="/todo"
+            element={
+              <PrivateRoute>
+                <TodoPage />
+              </PrivateRoute>
+            }
+          />
+
+          {/* 없는 경로 */}
+          <Route path="*" element={<Navigate to="/" replace />} />
 
 
 
 
-    //     </Routes>
-    //   </div>
-    // </BrowserRouter>
+        </Routes>
+      </div>
+    </BrowserRouter>
   )
 }
 
