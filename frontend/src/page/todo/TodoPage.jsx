@@ -1,10 +1,23 @@
-import { useState } from "react";
-import { logoutApi } from "../../service/userService";
+import { useState, useEffect } from "react";
+import { logoutApi } from "../../api/userService";
 import { useAuth } from "../../context/AuthContext";
+import CalenderComponent from "../../component/CalendarComponent";
+import Backlog from "../../component/Backlog";
+import "./TodoPage.css"
+
+
 
 function TodoPage() {
 
     const { logout } = useAuth();
+    const [backlog, setBacklog] = useState([]);
+    const [value, setValue] = useState(new Date());
+
+    useEffect(() => {
+        console.log('선택된 날:', value);
+        setBacklog(['이거 안함', '이것도 안함', '저것도 안함']);
+    }, [value]);
+
 
     const getLogOut = async () => {
         try {
@@ -20,8 +33,14 @@ function TodoPage() {
 
     return (
         <>
-            <h2>todo page로 쓸거</h2>
-            <button onClick={getLogOut}></button>
+            <div id="todo-container">
+                <div id="calendar">
+                    <CalenderComponent value={value} setValue={setValue} />
+                </div>
+                <div id="backlog">
+                    <Backlog backlog={backlog} />
+                </div>
+            </div>
         </>
     )
 }

@@ -6,7 +6,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
 import { useAuth } from "./context/AuthContext";
 import CalendarComponent from "./component/CalendarComponent";
-import BarChartCompoent from "./component/BarChartCompoent";
+import Backlog from "./component/Backlog";
 
 
 function App() {
@@ -15,8 +15,8 @@ function App() {
 
   return (
     <>
-      <BarChartCompoent />
-      <CalendarComponent /></>
+    <TodoPage/>
+      </>
     // <BrowserRouter>
     //   <div className="app-center">
     //     <Routes>

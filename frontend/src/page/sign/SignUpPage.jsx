@@ -1,5 +1,5 @@
 import "./SignUpPage.css";
-import { signupApi } from "../../service/userService";
+import { signupApi } from "../../api/userService";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
