@@ -1,8 +1,8 @@
 import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css'
-import './CalendarComponent.css'
+import 'react-calendar/dist/Calendar.css';
+import './CalendarComponent.css';
 
-function CalenderComponent({value, setValue }) {
+function CalendarComponent({value, setValue }) {
 
     
 
@@ -22,4 +22,4 @@ function CalenderComponent({value, setValue }) {
     );
 }
 
-export default CalenderComponent;
+export default CalendarComponent;
