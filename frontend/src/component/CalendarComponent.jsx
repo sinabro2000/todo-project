@@ -1,5 +1,4 @@
 import Calendar from 'react-calendar';
-import { useState, useEffect } from 'react';
 import 'react-calendar/dist/Calendar.css'
 import './CalendarComponent.css'
 
@@ -8,6 +7,10 @@ function CalenderComponent({value, setValue }) {
     
 
 
+
+
+
+    
     return (
         <>
             <Calendar

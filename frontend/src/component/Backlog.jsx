@@ -1,7 +1,3 @@
-import { useEffect, useState } from "react";
-
-
-
 function Backlog({ backlog }) {
 
     return (
@@ -15,7 +11,6 @@ function Backlog({ backlog }) {
                 </ul>
             )}
         </div>
-
     )
 }
 

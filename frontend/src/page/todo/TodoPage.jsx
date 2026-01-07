@@ -4,14 +4,19 @@ import { useAuth } from "../../context/AuthContext";
 import CalenderComponent from "../../component/CalendarComponent";
 import Backlog from "../../component/Backlog";
 import "./TodoPage.css"
+import apiClient from "../../api/apiclient";
 
 
 
 function TodoPage() {
 
     const { logout } = useAuth();
-    const [backlog, setBacklog] = useState([]);
-    const [value, setValue] = useState(new Date());
+    const [backlog, setBacklog] = useState([]); //미룬 리스트
+    const [value, setValue] = useState(new Date()); // 어떤 날짜가 선택됐는지
+
+
+
+
 
     useEffect(() => {
         console.log('선택된 날:', value);

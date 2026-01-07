@@ -12,7 +12,6 @@ function SignUpPage() {
 
     const handleSignup = async (e) => {
         e.preventDefault();
-
         if (!username || !password) {
             setError("모든 항목을 입력하세요.");
             return;
@@ -28,6 +27,7 @@ function SignUpPage() {
         } catch (err) {
             if (err.response && err.response.data && err.response.data.detail) {
                 setError(err.response.data.detail);
+                console.error(err)
             } else {
                 setError("회원가입 중 오류가 발생했습니다.");
             }
@@ -40,6 +40,10 @@ function SignUpPage() {
         <>
             <div id="signup-div">
                 <h2>회원가입 페이지</h2>
+
+
+                {error != null && <div>테스트</div>}
+            
                 <form onSubmit={handleSignup}>
                     <input
                         type="text"
