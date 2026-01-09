@@ -40,8 +40,8 @@ function DailyTodoList({ date, todos, setTodos }) {
 
   return (
     <div className="daily-todo">
-      <h2>📅Daily Todo List</h2>
-      <h3 className="todo-date">{dayjs(date).format("YYYY.MM.DD")}</h3>
+      <h3 id = "todo-list-h3">📅Daily Todo List</h3>
+      <h4 className="todo-date">{dayjs(date).format("YYYY.MM.DD")}</h4>
 
       {list.length === 0 ? (
         <p>등록된 할 일이 없습니다.</p>

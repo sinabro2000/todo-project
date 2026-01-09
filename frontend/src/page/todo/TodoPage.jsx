@@ -58,20 +58,20 @@ function TodoPage() {
         setBacklog(['이거 안함', '이것도 안함', '저것도 안함']);
     }, [selectedDate]);
 
-      const addTodo = () => {
-    if (!newTodoText.trim()) return;
+    const addTodo = () => {
+        if (!newTodoText.trim()) return;
 
-    const newTodo = {
-      id: todos.length + 1,
-      date: selectedDate,
-      time: newTodoTime,
-      text: newTodoText,
-      done: false,
+        const newTodo = {
+            id: todos.length + 1,
+            date: selectedDate,
+            time: newTodoTime,
+            text: newTodoText,
+            done: false,
+        };
+
+        setTodos(prev => [...prev, newTodo]);
+        setNewTodoText(""); // 입력 초기화
     };
-
-    setTodos(prev => [...prev, newTodo]);
-    setNewTodoText(""); // 입력 초기화
- };
 
     const getLogOut = async () => {
         try {
@@ -86,43 +86,45 @@ function TodoPage() {
         <>
             <div id="todo-container">
                 {/* 캘린더 */}
-                <div id="calendar">
+                <div id="top-div">
                     <CalendarComponent value={value} setValue={setValue} />
-                </div>
 
-                {/* 새 할 일 추가 */}
-                 <div id="add-todo">
-                <input
-                 type="time"
-                 value={newTodoTime}
-                 onChange={e => setNewTodoTime(e.target.value)}
-              />
-               <input
-                type="text"
-                placeholder="오늘 할 일 입력"
-                value={newTodoText}
-                onChange={e => setNewTodoText(e.target.value)}
-                />
-                <button onClick={addTodo}>추가</button>
-             </div>
+                    {/* 새 할 일 추가 */}
+                    <div id="add-todo">
+                        <input
+                            type="time"
+                            value={newTodoTime}
+                            onChange={e => setNewTodoTime(e.target.value)}
+                        />
+                        <input
+                            type="text"
+                            placeholder="오늘 할 일 입력"
+                            value={newTodoText}
+                            onChange={e => setNewTodoText(e.target.value)}
+                        />
+                        <button onClick={addTodo}>추가</button>
+                    </div>
+                </div>
 
                 {/* Daily Todo */}
-                <div id="daily-todo">
-                    <DailyTodoList
-                        date={selectedDate}
-                        todos={dailyTodos}
-                        setTodos={setTodos}
-                    />
-                </div>
+                <div id="bot-div">
+                    <div id="daily-todo">
+                        <DailyTodoList
+                            date={selectedDate}
+                            todos={dailyTodos}
+                            setTodos={setTodos}
+                        />
+                    </div>
 
-                {/* 도넛 차트 */}
-                <div id="chart">
-                    <DoughnutChart todos={dailyTodos}/>
-                </div>
+                    {/* 도넛 차트 */}
+                    <div id="chart">
+                        <DoughnutChart todos={dailyTodos} />
+                    </div>
 
-                {/* 미룬 일 */}
-                <div id="backlog">
-                    <Backlog backlog={backlog} />
+                    {/* 미룬 일 */}
+                    <div id="backlog">
+                        <Backlog backlog={backlog} />
+                    </div>
                 </div>
             </div>
         </>
