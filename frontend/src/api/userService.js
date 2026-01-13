@@ -15,3 +15,6 @@ export const logoutApi = () =>
 
 export const signupApi = (data) =>
     apiClient.post("/auth/signup", data);
+
+export const googleLoginApi = (data) =>
+    apiClient.post("/auth/google", data);

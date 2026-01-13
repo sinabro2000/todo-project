@@ -1,4 +1,4 @@
-package com.spinoff.todo.auth.entity;
+package com.spinoff.todo.auth.entity.user;
 
 import jakarta.persistence.*;
 import lombok.Getter;

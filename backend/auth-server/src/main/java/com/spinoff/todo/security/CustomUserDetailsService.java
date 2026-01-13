@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.spinoff.todo.auth.entity.User;
+import com.spinoff.todo.auth.entity.user.User;
 import com.spinoff.todo.auth.repo.UserRepository;
 
 import lombok.RequiredArgsConstructor;

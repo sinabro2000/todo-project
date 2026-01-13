@@ -51,8 +51,10 @@ function LoginPage() {
                     <span id="signup-text">
                         <span>아이디가 없으신가요?</span>
                         <button id="sign-btn" onClick={getSignUp}>회원가입</button>
-                        <GoogleLoginButton />
                     </span>
+                </div>
+                <div id="api-login-div">
+                    <GoogleLoginButton />
                 </div>
             </div>
         </>

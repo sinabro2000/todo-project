@@ -8,7 +8,7 @@
     import org.springframework.web.bind.annotation.PostMapping;
     import org.springframework.web.bind.annotation.RequestBody;
 
-    import com.spinoff.todo.auth.service.SignUpService;
+    import com.spinoff.todo.auth.service.UserService;
 
     import lombok.RequiredArgsConstructor;
 
@@ -18,12 +18,12 @@
     @RequiredArgsConstructor
     public class SignUpController {
 
-        private final SignUpService signUpService;
+        private final UserService userService;
 
 
         @PostMapping("/signup")
         public void signUp(@RequestBody SignUpRequestDTO req) {
-            signUpService.signUp(req);
+            userService.signUp(req);
         }
         
     }
