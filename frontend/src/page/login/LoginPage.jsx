@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import { loginApi } from "../../service/userService";
+import { loginApi } from "../../api/userService";
+import GoogleLoginButton from "../../component/Google/GoogleLoginButton";
 import "./LoginPage.css";
 
 function LoginPage() {
@@ -50,6 +51,7 @@ function LoginPage() {
                     <span id="signup-text">
                         <span>아이디가 없으신가요?</span>
                         <button id="sign-btn" onClick={getSignUp}>회원가입</button>
+                        <GoogleLoginButton />
                     </span>
                 </div>
             </div>

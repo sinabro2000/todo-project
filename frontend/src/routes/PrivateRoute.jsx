@@ -3,13 +3,13 @@ import { useAuth } from "../context/AuthContext"
 
 
 function PrivateRoute({ children}) {
-    const {isAuthenticated , authChecked} = useAuth();
+    // const {isAuthenticated , authChecked} = useAuth();
 
-     if (!authChecked) return null;
+    //  if (!authChecked) return null;
 
-    if (!isAuthenticated) {
-        return <Navigate to="/login" replace/>;
-    }
+    // if (!isAuthenticated) {
+    //     return <Navigate to="/login" replace/>;
+    // }
 
     return children;
 }

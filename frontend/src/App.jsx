@@ -7,7 +7,6 @@ import PublicRoute from "./routes/PublicRoute";
 import { useAuth } from "./context/AuthContext";
 
 
-
 function App() {
 
   const { isAuthenticated } = useAuth();
@@ -38,7 +37,7 @@ function App() {
               </PublicRoute>
             }
           />
-          
+
 
           {/* 회원가입 페이지*/}
           <Route

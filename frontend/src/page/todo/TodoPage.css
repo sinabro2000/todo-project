@@ -1,0 +1,23 @@
+/* 탑 영역 가로 정렬 */
+#top-div {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    background: rgb(227, 227, 255);
+}
+
+/* 바텀 영역 가로 정렬 */
+#bot-div {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    background: rgb(255, 230, 230);
+}
+
+/* 바텀 내부 div 동일 너비 */
+#daily-todo,
+#chart,
+#backlog {
+    flex: 1;
+}
