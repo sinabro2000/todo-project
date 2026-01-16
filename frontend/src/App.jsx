@@ -4,6 +4,7 @@ import TodoPage from "./page/todo/TodoPage";
 import SignUpPage from "./page/sign/SignUpPage";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
+import HomePage from "./page/home/HomePage";
 import { useAuth } from "./context/AuthContext";
 
 
@@ -22,9 +23,7 @@ function App() {
           <Route
             path="/"
             element={
-              isAuthenticated
-                ? <Navigate to="/todo" replace />
-                : <Navigate to="/login" replace />
+              <HomePage />
             }
           />
 
