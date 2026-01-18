@@ -3,13 +3,6 @@ import 'react-calendar/dist/Calendar.css';
 import './CalendarComponent.css';
 
 function CalendarComponent({value, setValue }) {
-
-    
-
-
-
-
-
     
     return (
         <>

@@ -1,11 +1,9 @@
 import React from "react";
-import Header from "../../component/Header/Header";
 import todoImage from "../../assets/screen.png"
 
 function HomePage() {
     return (
         <div className="flex flex-col min-h-screen font-sans bg-gray-50">
-            <Header />
 
             {/* 히어로 섹션 */}
             <section className="relative bg-indigo-50">

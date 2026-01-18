@@ -1,11 +1,13 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import LoginPage from './page/login/LoginPage'
-import TodoPage from "./page/todo/TodoPage";
-import SignUpPage from "./page/sign/SignUpPage";
+import LoginPage from './pages/login/LoginPage'
+import TodoPage from "./pages/todo/TodoPage";
+import SignUpPage from "./pages/sign/SignUpPage";
+import AboutPage from "./pages/about/AboutPage";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
-import HomePage from "./page/home/HomePage";
+import HomePage from "./pages/home/HomePage";
 import { useAuth } from "./context/AuthContext";
+import NavBar from "./component/Nav/NavBar";
 
 
 function App() {
@@ -14,10 +16,11 @@ function App() {
 
   return (
     <BrowserRouter>
+      {/*고정 네비게이션*/}
+      <NavBar />
+
       <div className="app-center">
         <Routes>
-
-
 
           {/* 메인 */}
           <Route
@@ -50,21 +53,20 @@ function App() {
 
 
           {/* To do 페이지 */}
+          <Route path="/todo" element={<TodoPage />} />
+
+          {/* 개발자 소개 페이지 */}
           <Route
-            path="/todo"
+            path="/about"
             element={
-              <PrivateRoute>
-                <TodoPage />
-              </PrivateRoute>
+              <PublicRoute allowAuthenticated>
+                <AboutPage />
+              </PublicRoute>
             }
           />
 
           {/* 없는 경로 */}
           <Route path="*" element={<Navigate to="/" replace />} />
-
-
-
-
         </Routes>
       </div>
     </BrowserRouter>

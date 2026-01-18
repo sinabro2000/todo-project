@@ -1,0 +1,28 @@
+.pending {
+  margin-top: 16px;
+}
+
+.pending h2 {
+  margin-bottom: 8px;
+}
+
+.pending-list {
+  list-style: none;
+  padding: 0;
+}
+
+.pending-item {
+  display: flex;
+  gap: 8px;
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pending-item:hover {
+  background: #f2f2f2;
+}
+
+.pending.empty {
+  color: #777;
+}
