@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: todo
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/home?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
+    username: root
+    password: "1111"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+google:
+  client-id: 327038395876-5gd9lmrp2fa2sca2l90e6cl3a8ugv05u.apps.googleusercontent.com

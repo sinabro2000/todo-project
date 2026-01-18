@@ -1,5 +1,4 @@
-import apiClient from "./apiclient";
-
+import apiClient from "./apiClient";
 
 
 export const meApi = async () => {
@@ -15,3 +14,6 @@ export const logoutApi = () =>
 
 export const signupApi = (data) =>
     apiClient.post("/auth/signup", data);
+
+export const googleLoginApi = (data) =>
+    apiClient.post("/auth/google", data);

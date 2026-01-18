@@ -1,3 +1,60 @@
-#todo-list-h3{
-     white-space: nowrap;
+.daily-todo {
+    margin: 0;
+    padding: 0;
+}
+
+.daily-todo h2,
+.daily-todo h3 {
+    margin: 0;
+}
+
+.daily-todo table {
+    margin-top: 6px;
+    width: 300px;
+}
+
+.manage-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 12px;
+    width: 290px;
+}
+
+/* Todo 완료한 일 줄 긋기 애니메이션 */
+
+.todo-title {
+    position: relative;
+    display: inline-block;
+    transition: color 0.25x ease;
+}
+
+.todo-title.done {
+    color: #999;
+}
+
+.todo-title.done::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    background-color: #999;
+    transform-origin: left;
+    animation: strike-through 0.25s ease forwards;
+}
+
+@keyframes strike-through {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+#todo-list-h3 {
+    white-space: nowrap;
 }

@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.spinoff.todo.auth.entity.User;
+import com.spinoff.todo.auth.entity.user.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
