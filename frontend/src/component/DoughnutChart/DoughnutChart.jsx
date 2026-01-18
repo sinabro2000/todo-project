@@ -51,7 +51,7 @@ function DoughnutChart({ todos }) {
     };
 
     return (
-        <div style={{ width: "260px", margin: "0 auto", textAlign: "center" }}>
+        <div style={{ width: "260px", textAlign: "center" }}>
             <h3>오늘의 성취도</h3>
             <Doughnut data={data} options={options} />
         </div>

@@ -6,6 +6,12 @@ html, body, #root {
 
 .app-center {
   min-height: 100%;
+  display: block;
+  padding-top: 60px; /* navbar 높이만큼 콘텐츠 밀어줌 */
+}
+
+.login-page {
+  min-height: calc(100vh - 60px);
   display: flex;
   justify-content: center;
   align-items: center;
