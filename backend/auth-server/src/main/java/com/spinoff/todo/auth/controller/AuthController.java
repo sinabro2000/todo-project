@@ -41,6 +41,7 @@ public class AuthController {
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
+    
     @PostMapping("/google")
     public ResponseEntity<?> googleLogin(@RequestBody GoogleLoginRequest request) {
         GoogleIdToken.Payload payload = googleTokenVerifier.verify(request.getIdToken());
@@ -53,6 +54,7 @@ public class AuthController {
                 googleId,
                 name);
  
+
         String token = jwtTokenProvider.createToken(user.getUsername());
 
         return ResponseEntity.ok(new JwtResponse(token));
