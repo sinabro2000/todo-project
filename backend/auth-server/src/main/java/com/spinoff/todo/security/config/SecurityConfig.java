@@ -47,7 +47,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(request -> {
                     var c = new org.springframework.web.cors.CorsConfiguration();
-                    c.setAllowedOrigins(Arrays.asList("http://localhost:5173", "http://127.0.0.1:5173"));
+                    c.setAllowedOrigins(Arrays.asList("http://localhost:5173", "http://127.0.0.1:5174"));
                     c.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
                     c.setAllowedHeaders(Arrays.asList("*"));
                     c.setAllowCredentials(true);
@@ -56,13 +56,19 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .formLogin(form -> form.disable())
                 .httpBasic(basic -> basic.disable())
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/login", "/auth/signup").permitAll()
-                        .anyRequest().authenticated())
+                // .authorizeHttpRequests(auth -> auth
+                //         .requestMatchers("/auth/login", "/auth/signup").permitAll()
+                //         .anyRequest().authenticated())
 
-                .addFilterBefore(
-                        jwtAuthenticationFilter,
-                        UsernamePasswordAuthenticationFilter.class);
+                // .addFilterBefore(
+                //         jwtAuthenticationFilter,
+                //         UsernamePasswordAuthenticationFilter.class);
+
+                // 임시로 모든 요청 허용---------------------------------------------
+                .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
+                // .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); 
+                // JWT 필터는 임시 해제---------------------------------------------
+
 
         return http.build();
     }

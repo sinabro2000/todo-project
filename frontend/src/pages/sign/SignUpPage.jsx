@@ -1,70 +1,128 @@
 import "./SignUpPage.css";
 import { signupApi } from "../../api/userService";
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 function SignUpPage() {
-    const navigate = useNavigate();
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-    const handleSignup = async (e) => {
-        e.preventDefault();
-        if (!username || !password) {
-            setError("모든 항목을 입력하세요.");
-            return;
-        }
+  const [form, setForm] = useState({
+    username: "",
+    password: "",
+    nickname: "",
+    email: "",
+  });
 
-        try {
-            const response = await signupApi({
-                username,
-                password,
-            });
-            setError("");
-            navigate("/")
-        } catch (err) {
-            if (err.response && err.response.data && err.response.data.detail) {
-                setError(err.response.data.detail);
-                console.error(err)
-            } else {
-                setError("회원가입 중 오류가 발생했습니다.");
-            }
-        }
+  const [errors, setErrors] = useState({
+  username: "",
+  password: "",
+  nickname: "",
+  email: "",
+});
 
-    }
+  const [error, setError] = useState("");
 
 
-    return (
-        <>
-            <div id="signup-div">
-                <h2>회원가입 페이지</h2>
+  const handleChange = (e) => {
+  const { name, value } = e.target;
 
+  setForm({
+    ...form,
+    [name]: value,
+  });
 
-                {error != null && <div>테스트</div>}
-            
-                <form onSubmit={handleSignup}>
-                    <input
-                        type="text"
-                        placeholder="아이디"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
+  // 즉시 유효성 검사
+  let msg = "";
 
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
+  if (name === "username") {
+    if (value.trim() === "") msg = "아이디는 필수입니다.";
+  }
 
-                    {error && <p className="error">{error}</p>}
-
-                    <button type="submit">회원가입</button>
-                </form>
-            </div>
-        </>
-    )
+  if (name === "password" && value !== "") {
+     if (value.length < 8) msg = "비밀번호는 8자 이상이어야 합니다.";
 }
 
-export default SignUpPage; 
+
+  if (name === "nickname") {
+    if (value.trim() === "") msg = "닉네임은 필수입니다.";
+  }
+
+  if (name === "email") {
+    if (!value.includes("@")) msg = "이메일 형식이 아닙니다.";
+  }
+
+  setErrors((prev) => ({
+    ...prev,
+    [name]: msg,
+  }));
+};
+
+
+  const handleSignup = async (e) => {
+  e.preventDefault();
+
+  if (Object.values(errors).some((v) => v !== "")) {
+    setError("입력값을 확인하세요.");
+    return;
+  }
+
+  try {
+    await signupApi(form);
+    navigate("/");
+  } catch (err) {
+    setError("회원가입 중 오류가 발생했습니다.");
+  }
+};
+
+
+  return (
+    <div className="signup-wrapper">
+      <form className="signup-card" onSubmit={handleSignup}>
+        <h2>Sign Up</h2>
+        <p className="subtitle">새 계정을 만들어보세요</p>
+
+        <input
+          name="username"
+          type="text"
+          placeholder="아이디"
+          value={form.username}
+          onChange={handleChange}
+        />
+        {errors.username && <p className="error">{errors.username}</p>}
+
+        <input
+          name="password"
+          type="password"
+          placeholder="비밀번호"
+          value={form.password}
+          onChange={handleChange}
+        />
+        {errors.password && <p className="error">{errors.password}</p>}
+
+        <input
+          name="nickname"
+          type="text"
+          placeholder="닉네임"
+          value={form.nickname}
+          onChange={handleChange}
+        />
+        {errors.nickname && <p className="error">{errors.nickname}</p>}
+
+        <input
+          name="email"
+          type="email"
+          placeholder="이메일"
+          value={form.email}
+          onChange={handleChange}
+        />
+        {errors.email && <p className="error">{errors.email}</p>}
+
+        {error && <p className="error">{error}</p>}
+
+        <button type="submit">회원가입</button>
+      </form>
+    </div>
+  );
+}
+
+export default SignUpPage;
