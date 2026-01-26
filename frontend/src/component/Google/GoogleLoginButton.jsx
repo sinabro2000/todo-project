@@ -10,7 +10,7 @@ function GoogleLoginButton() {
     const handleGoogleLogin = async (res) => {
         try {
             const idToken = res.credential;
-
+            console.log("Google ID Token:", idToken);
             await googleLoginApi({ idToken });
             const me = await meApi();
             setUser(me);

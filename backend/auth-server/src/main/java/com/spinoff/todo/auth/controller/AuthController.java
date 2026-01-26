@@ -41,22 +41,23 @@ public class AuthController {
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    // @PostMapping("/google")
-    // public ResponseEntity<?> googleLogin(@RequestBody GoogleLoginRequest request) {
-    //     GoogleIdToken.Payload payload = googleTokenVerifier.verify(request.getIdToken());
-    //     String email = payload.getEmail();
-    //     String googleId = payload.getSubject();
-    //     String name = (String) payload.get("name");
+    @PostMapping("/google")
+    public ResponseEntity<?> googleLogin(@RequestBody GoogleLoginRequest request) {
+        // 1. 구글 토큰 검증
+        GoogleIdToken.Payload payload = googleTokenVerifier.verify(request.getIdToken());
+        if (payload == null) {
+            return ResponseEntity.status(401).body("Invalid Google Token");
+        }
 
-    //     User user = userService.findOrCreateGoogleUser(
-    //             email,
-    //             googleId,
-    //             name);
- 
-    //     String token = jwtTokenProvider.createToken(user.getUsername());
+        // 2. 유저 처리 (조회 또는 자동 가입)
+        User user = userService.findOrCreateGoogleUser(
+                payload.getEmail(),
+                (String) payload.get("name"));
 
-    //     return ResponseEntity.ok(new JwtResponse(token));
+        // 3. 우리 서비스 전용 토큰 발행
+        String token = jwtTokenProvider.createToken(user.getUsername());
 
-    // }
+        return ResponseEntity.ok(new JwtResponse(token));
+    }
 
 }
