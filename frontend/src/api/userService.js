@@ -1,10 +1,9 @@
 import apiClient from "./apiClient";
 
 
-export const meApi = async () => {
-    const res = await apiClient.get("/auth/me");
-    return res.data;
-}
+export const meApi = () => {
+  return apiClient.get("/auth/me");
+};
 
 export const loginApi = (data) =>
     apiClient.post("/auth/login", data);

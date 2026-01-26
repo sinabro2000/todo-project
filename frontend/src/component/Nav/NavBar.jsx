@@ -1,6 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 function NavBar() {
+    const { isAuthenticated, user, logout } = useAuth();
+    const navigate = useNavigate();
+
     const linkStyle = ({ isActive }) =>
         `
     relative px-3 py-2 text-sm font-medium transition
@@ -9,6 +13,11 @@ function NavBar() {
     after:scale-x-0 after:bg-indigo-400 after:transition
     ${isActive ? "after:scale-x-100" : "hover:after:scale-x-100"}
     `;
+
+    const handleLogout = () => {
+        logout();        // 로그아웃 처리
+        navigate("/");   // 홈으로 이동
+    };
 
     return (
         <nav className="sticky top-0 z-50 backdrop-blur bg-slate-900/80 border-b border-slate-800">
@@ -32,22 +41,38 @@ function NavBar() {
 
                     {/* 버튼 그룹 */}
                     <div className="flex items-center gap-3 ml-4">
-                        {/* Login 버튼: 테두리만 있는 스타일 (Outline) */}
-                        <NavLink
-                            to="/login"
-                            className="px-4 py-2 text-sm font-semibold text-slate-300 hover:text-white transition"
-                        >
-                            Log in
-                        </NavLink>
+                        {isAuthenticated ? (
+                            <>
+                                <span className="text-sm font-medium text-slate-200">
+                                    {user?.nickname || user?.username || "User"}
+                                </span>
 
-                        {/* Signup 버튼: 채워진 스타일 (Solid) */}
-                        <NavLink
-                            to="/signup"
-                            className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white 
-                                     hover:bg-indigo-500 transition shadow-md shadow-indigo-500/20"
-                        >
-                            Sign up
-                        </NavLink>
+                                <button
+                                    onClick={handleLogout}
+                                    className="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white 
+                                               hover:bg-red-500 transition shadow-md shadow-red-500/20"
+                                >
+                                    Logout
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <NavLink
+                                    to="/login"
+                                    className="px-4 py-2 text-sm font-semibold text-slate-300 hover:text-white transition"
+                                >
+                                    Log in
+                                </NavLink>
+
+                                <NavLink
+                                    to="/signup"
+                                    className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white 
+                                             hover:bg-indigo-500 transition shadow-md shadow-indigo-500/20"
+                                >
+                                    Sign up
+                                </NavLink>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

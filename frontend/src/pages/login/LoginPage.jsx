@@ -19,7 +19,11 @@ function LoginPage() {
                 username,
                 password,
             });
-            login();
+            if (response.status === 200) {
+                await login();
+                console.log("로그인 성공");
+                navigate("/todo");
+            }
 
         } catch (error) {
             console.log(error)

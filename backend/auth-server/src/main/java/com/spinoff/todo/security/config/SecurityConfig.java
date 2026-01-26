@@ -34,8 +34,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http)
-            throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
                 .exceptionHandling(ex -> ex
@@ -56,19 +55,10 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .formLogin(form -> form.disable())
                 .httpBasic(basic -> basic.disable())
-                // .authorizeHttpRequests(auth -> auth
-                //         .requestMatchers("/auth/login", "/auth/signup").permitAll()
-                //         .anyRequest().authenticated())
-
-                // .addFilterBefore(
-                //         jwtAuthenticationFilter,
-                //         UsernamePasswordAuthenticationFilter.class);
-
-                // 임시로 모든 요청 허용---------------------------------------------
-                .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
-                // .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); 
-                // JWT 필터는 임시 해제---------------------------------------------
-
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/auth/login", "/auth/google", "/auth/signup").permitAll()
+                        .anyRequest().authenticated())
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
