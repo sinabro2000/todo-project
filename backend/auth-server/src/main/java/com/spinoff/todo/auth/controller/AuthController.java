@@ -41,21 +41,22 @@ public class AuthController {
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    @PostMapping("/google")
-    public ResponseEntity<?> googleLogin(@RequestBody GoogleLoginRequest request) {
-        GoogleIdToken.Payload payload = googleTokenVerifier.verify(request.getIdToken());
-        String email = payload.getEmail();
-        String googleId = payload.getSubject();
-        String name = (String) payload.get("name");
+    // @PostMapping("/google")
+    // public ResponseEntity<?> googleLogin(@RequestBody GoogleLoginRequest request) {
+    //     GoogleIdToken.Payload payload = googleTokenVerifier.verify(request.getIdToken());
+    //     String email = payload.getEmail();
+    //     String googleId = payload.getSubject();
+    //     String name = (String) payload.get("name");
 
-        User user = userService.findOrCreateGoogleUser(
-                email,
-                googleId,
-                name);
+    //     User user = userService.findOrCreateGoogleUser(
+    //             email,
+    //             googleId,
+    //             name);
  
-        String token = jwtTokenProvider.createToken(user.getUsername());
+    //     String token = jwtTokenProvider.createToken(user.getUsername());
 
-        return ResponseEntity.ok(new JwtResponse(token));
+    //     return ResponseEntity.ok(new JwtResponse(token));
 
-    }
+    // }
+
 }

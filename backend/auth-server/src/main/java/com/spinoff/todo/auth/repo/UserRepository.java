@@ -13,5 +13,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     
     //중복체크
     boolean existsByUsername(String username);
+    boolean existsByNickname(String nickname);
+    boolean existsByEmail(String email);
     
 }
